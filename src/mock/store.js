@@ -335,7 +335,8 @@ export function StoreProvider({ children }) {
     document.body.dataset.theme = state.ui.theme;
   }, [state.ui.theme]);
 
-  return <StoreContext.Provider value={api}>{children}</StoreContext.Provider>;
+  // Keep this file as pure .js (no JSX) for Vite build import analysis.
+  return React.createElement(StoreContext.Provider, { value: api }, children);
 }
 
 export function useStore() {
